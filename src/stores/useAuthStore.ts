@@ -14,6 +14,7 @@ import { useConfigStore } from './useConfigStore';
 import { useModelsStore } from './useModelsStore';
 import { useQuotaStore } from './useQuotaStore';
 import { detectApiBaseFromLocation, normalizeApiBase } from '@/utils/connection';
+import { createQuotaGraphCacheScope, quotaGraphCache } from '@/features/quota/graphCache';
 
 interface AuthStoreState extends AuthState {
   connectionStatus: ConnectionStatus;
@@ -95,6 +96,15 @@ export const useAuthStore = create<AuthStoreState>()(
         const apiBase = normalizeApiBase(credentials.apiBase);
         const managementKey = credentials.managementKey.trim();
         const rememberPassword = credentials.rememberPassword ?? get().rememberPassword ?? false;
+        const previous = get();
+        const previousGraphScope = createQuotaGraphCacheScope(
+          normalizeApiBase(previous.apiBase),
+          previous.managementKey
+        );
+        const nextGraphScope = createQuotaGraphCacheScope(apiBase, managementKey);
+        if (previousGraphScope && previousGraphScope !== nextGraphScope) {
+          quotaGraphCache.remove(previousGraphScope);
+        }
 
         try {
           set({
@@ -151,6 +161,12 @@ export const useAuthStore = create<AuthStoreState>()(
       // 登出
       logout: () => {
         restoreSessionPromise = null;
+        const current = get();
+        const graphScope = createQuotaGraphCacheScope(
+          normalizeApiBase(current.apiBase),
+          current.managementKey
+        );
+        quotaGraphCache.remove(graphScope);
         apiClient.setConfig({ apiBase: '', managementKey: '' });
         useConfigStore.getState().clearCache();
         useModelsStore.getState().clearCache();

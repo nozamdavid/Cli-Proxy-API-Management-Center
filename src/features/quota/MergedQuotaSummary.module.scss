@@ -1,0 +1,707 @@
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.summaryHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  min-width: 0;
+}
+
+.summaryTitle {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 650;
+  line-height: 1.3;
+}
+
+.summaryMeta {
+  margin: 5px 0 0;
+  color: var(--text-tertiary);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.graphStatus {
+  margin: -5px 0 0;
+  color: var(--text-tertiary);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.refreshButton {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 0 11px;
+  border: 1px solid var(--border-color);
+  border-radius: 9px;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  transition:
+    background-color var(--dur-hover, 180ms) var(--ease-out-strong, ease),
+    border-color var(--dur-hover, 180ms) var(--ease-out-strong, ease),
+    color var(--dur-hover, 180ms) var(--ease-out-strong, ease);
+
+  &:hover:not(:disabled) {
+    border-color: var(--border-hover);
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.spinning {
+  animation: refresh-spin 1s linear infinite;
+}
+
+@keyframes refresh-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.providerSection {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  min-width: 0;
+  padding-top: 15px;
+  border-top: 1px solid var(--border-color);
+}
+
+.sectionTitle,
+.subsectionTitle {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 620;
+  line-height: 1.4;
+}
+
+.subsectionTitle {
+  margin-top: 4px;
+  font-size: 12px;
+}
+
+.barGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: 10px;
+  min-width: 0;
+}
+
+.barCard {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 11px;
+  background: var(--bg-secondary);
+}
+
+.barHeading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
+  font-size: 12px;
+  font-weight: 560;
+
+  > span:first-child {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+}
+
+.barSubheading {
+  color: var(--text-tertiary);
+  font-size: 11px;
+  font-weight: 450;
+}
+
+.barValue,
+.meterValue {
+  flex: 0 0 auto;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.meterCell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 100px;
+}
+
+.meter {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 36px;
+  height: 7px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--bg-tertiary);
+}
+
+.meterFill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--success-color);
+  transition: width 180ms ease-out;
+}
+
+.meterValue {
+  min-width: 42px;
+  text-align: right;
+  font-size: 11px;
+}
+
+.unavailable,
+.empty {
+  color: var(--text-tertiary);
+  font-size: 11px;
+}
+
+.coverage {
+  margin: 0;
+  color: var(--text-tertiary);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.pooledChart {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: var(--bg-secondary);
+}
+
+.pooledChartHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.pooledHeadlineBlock {
+  min-width: 0;
+}
+
+.pooledHeadline {
+  margin: 5px 0 0;
+  color: var(--text-primary);
+  font-size: clamp(28px, 5vw, 46px);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.045em;
+  line-height: 1.12;
+}
+
+.pooledHeadlineRemaining {
+  font-weight: 700;
+}
+
+.pooledHeadlineCapacity {
+  margin-inline-start: 0.45em;
+  color: var(--text-tertiary);
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: normal;
+  vertical-align: baseline;
+}
+
+.poolSelectLabel {
+  display: flex;
+  flex: 1 1 260px;
+  flex-direction: column;
+  gap: 5px;
+  min-width: min(230px, 45%);
+  color: var(--text-tertiary);
+  font-size: 11px;
+}
+
+.chartControls {
+  display: flex;
+  flex: 0 1 460px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 8px;
+  min-width: 0;
+}
+
+.graphColorActions {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.graphColorLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-tertiary);
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.graphColorInput {
+  width: 38px;
+  height: 34px;
+  padding: 3px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-primary);
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+}
+
+.graphColorReset {
+  min-height: 34px;
+  padding: 0 9px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: 11px;
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    border-color: var(--border-hover);
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.poolSelect {
+  width: 100%;
+  min-height: 36px;
+  padding: 0 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: 12px;
+
+  &:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+}
+
+.selectedPoolName {
+  color: var(--text-primary);
+  font-size: 12px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.chartFrame {
+  min-width: 0;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+
+.chartSvg {
+  display: block;
+  width: 100%;
+  min-width: 520px;
+  height: auto;
+  overflow: visible;
+}
+
+.chartGrid,
+.chartGridVertical {
+  stroke: var(--border-color);
+  stroke-width: 1;
+  opacity: 0.72;
+}
+
+.chartGridVertical {
+  stroke-dasharray: 2 5;
+}
+
+.chartAxisLabel {
+  fill: var(--text-tertiary);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.nowLine {
+  stroke: var(--text-tertiary);
+  stroke-width: 1.4;
+  stroke-dasharray: 3 4;
+  opacity: 0.8;
+}
+
+.nowLabel {
+  fill: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.recordedArea {
+  fill: var(--graph-color, var(--success-color));
+  opacity: 0.11;
+}
+
+.recordedLine,
+.projectedLine {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.recordedLine {
+  stroke: var(--graph-color, var(--success-color));
+  stroke-width: 2.5;
+}
+
+.projectedLine {
+  stroke: var(--graph-color, var(--primary-color));
+  stroke-width: 2;
+  stroke-dasharray: 7 6;
+}
+
+.recordedPoint {
+  fill: var(--graph-color, var(--success-color));
+  stroke: var(--bg-secondary);
+  stroke-width: 2;
+}
+
+.resetMarker {
+  cursor: help;
+
+  circle {
+    fill: var(--graph-color, var(--primary-color));
+    stroke: var(--bg-secondary);
+    stroke-width: 2;
+  }
+
+  &:focus-visible {
+    outline: none;
+
+    circle {
+      stroke: var(--text-primary);
+      stroke-width: 3;
+    }
+  }
+}
+
+.chartLegend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  color: var(--text-secondary);
+  font-size: 11px;
+
+  > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  i {
+    display: inline-block;
+    width: 18px;
+    height: 0;
+    border-top: 2px solid;
+  }
+}
+
+.legendRecorded {
+  border-color: var(--graph-color, var(--success-color)) !important;
+}
+
+.legendProjected {
+  border-color: var(--graph-color, var(--primary-color)) !important;
+  border-top-style: dashed !important;
+}
+
+.legendReset {
+  position: relative;
+  width: 8px !important;
+  height: 8px !important;
+  border: 0 !important;
+  border-radius: 50%;
+  background: var(--graph-color, var(--primary-color));
+}
+
+.chartStats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+    padding: 9px 11px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-primary);
+  }
+
+  span {
+    color: var(--text-tertiary);
+    font-size: 10px;
+  }
+
+  strong {
+    overflow-wrap: anywhere;
+    color: var(--text-primary);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.forecastNote,
+.historyNote {
+  margin: 0;
+  color: var(--text-tertiary);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.historyNote {
+  color: var(--text-secondary);
+}
+
+.chartDataDetails {
+  color: var(--text-secondary);
+  font-size: 11px;
+
+  summary {
+    width: fit-content;
+    color: var(--text-secondary);
+    cursor: pointer;
+  }
+
+  summary:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
+  }
+
+  .tableWrap {
+    margin-top: 8px;
+    max-height: 320px;
+    overflow: auto;
+  }
+}
+
+.chartDataNote {
+  margin: 8px 0 0;
+  color: var(--text-tertiary);
+}
+
+.tableWrap {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: var(--bg-secondary);
+}
+
+.table {
+  width: 100%;
+  min-width: max-content;
+  border-collapse: collapse;
+  color: var(--text-secondary);
+  font-size: 11px;
+  line-height: 1.4;
+  text-align: left;
+
+  th,
+  td {
+    max-width: 300px;
+    padding: 9px 11px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+    overflow-wrap: anywhere;
+  }
+
+  th {
+    color: var(--text-primary);
+    font-weight: 580;
+  }
+
+  thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: var(--bg-tertiary);
+    white-space: nowrap;
+  }
+
+  tbody tr:last-child > * {
+    border-bottom: 0;
+  }
+
+  tbody th[scope='row'] {
+    min-width: 150px;
+    font-weight: 540;
+  }
+
+  small {
+    display: block;
+    margin-top: 3px;
+    color: var(--text-tertiary);
+    font-size: 10px;
+    font-weight: 450;
+    white-space: normal;
+  }
+}
+
+.rowError {
+  color: var(--danger-color);
+}
+
+.error {
+  margin: 0;
+  padding: 9px 11px;
+  border: 1px solid var(--warning-border);
+  border-radius: 9px;
+  background: var(--bg-error-light);
+  color: var(--danger-color);
+  font-size: 12px;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 640px) {
+  .summary {
+    gap: 14px;
+    padding: 13px;
+  }
+
+  .summaryHeader {
+    align-items: center;
+  }
+
+  .summaryTitle {
+    font-size: 15px;
+  }
+
+  .pooledChart {
+    padding: 12px;
+  }
+
+  .pooledChartHeader {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .chartControls {
+    flex: 1 1 auto;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .poolSelectLabel {
+    flex-basis: 100%;
+    min-width: 0;
+  }
+
+  .chartFrame {
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+  }
+
+  .chartSvg {
+    width: 720px;
+    min-width: 720px;
+  }
+
+  .chartStats {
+    grid-template-columns: 1fr;
+  }
+
+  .refreshButton {
+    min-height: 32px;
+    padding: 0 9px;
+  }
+
+  .table th,
+  .table td {
+    padding: 8px 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .refreshButton,
+  .meterFill {
+    transition: none;
+  }
+
+  .spinning {
+    animation: none;
+  }
+}

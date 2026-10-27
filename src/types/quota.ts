@@ -16,8 +16,8 @@ export interface AntigravityQuotaSummaryBucketPayload {
   window?: string;
   resetTime?: string;
   reset_time?: string;
-  remainingFraction?: number | string;
-  remaining_fraction?: number | string;
+  remainingFraction?: number | string | null;
+  remaining_fraction?: number | string | null;
   description?: string;
 }
 

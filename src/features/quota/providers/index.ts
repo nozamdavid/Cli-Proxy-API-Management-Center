@@ -33,6 +33,7 @@ export interface QuotaCardState {
   status: 'idle' | 'loading' | 'success' | 'error';
   error?: string;
   errorStatus?: number;
+  mergedObservedAtMs?: number;
 }
 
 export interface QuotaAdapter {

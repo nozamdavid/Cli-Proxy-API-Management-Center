@@ -74,7 +74,7 @@ Upgrade the backend first and back up `config.yaml`. The backend returns the v8 
 | **Configuration** | Edit common settings and client keys visually, or use the YAML editor with search, highlighting, and a save diff preview. |
 | **AI providers** | Configure Gemini, Codex, Claude, Vertex, and OpenAI-compatible providers; manage keys, headers, proxies, and model mappings. |
 | **Auth files & OAuth** | Upload, download, and organize credentials; connect supported providers with OAuth or device flows; manage model aliases and exclusions. |
-| **Quotas** | Inspect quota and usage information for supported providers, including Claude, Antigravity, Codex, Kimi, and xAI/Grok. |
+| **Quotas** | Inspect merged quota summaries and per-account quota details for supported providers, including Claude, Antigravity, Codex, Kimi, and xAI/Grok. See the [merged quota endpoint dependency](docs/merged-quota.md). |
 | **Logs** | Follow logs with auto-refresh, search, hide management traffic, and download request error logs. |
 | **Plugins** | Access plugin management when the connected backend advertises support. |
 | **System** | Check for updates, inspect available models, and clear local login data. |
